@@ -6,15 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import signin.UserData;
 
-public class CreateTaskTest extends TestBase {
+public class CreateTaskTest extends CreateTaskHelper {
 
     @Before
     public void login() {
         setup();
-        login(new UserData(
-                "d23.alexandr",
-                "Test1"
-        ));
     }
 
     @After

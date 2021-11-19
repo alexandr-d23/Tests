@@ -5,7 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SignInTest extends TestBase {
+public class SignInTest extends SignInHelper {
 
     @Before
     public void before() {
@@ -22,7 +22,7 @@ public class SignInTest extends TestBase {
 
     @After
     public void tearDown() {
-        quitDriver();
+       // quitDriver();
     }
 
 }
