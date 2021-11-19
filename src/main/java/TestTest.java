@@ -23,10 +23,6 @@ public class TestTest {
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
-  @After
-  public void tearDown() {
-    driver.quit();
-  }
   @Test
   public void test() {
     driver.get("http://todolist.ru/");

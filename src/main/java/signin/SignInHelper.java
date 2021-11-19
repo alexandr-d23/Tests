@@ -1,9 +1,19 @@
 package signin;
 
 import common.TestBase;
+import helpers.AppManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SignInHelper extends TestBase {
+public class SignInHelper {
+
+    private AppManager appManager;
+    private ChromeDriver driver;
+
+    public SignInHelper(AppManager appManager){
+        this.appManager = appManager;
+        this.driver = appManager.getDriver();
+    }
 
     public void login(UserData data) {
         appManager.getNavigationHelper().openLoginPage();
@@ -12,11 +22,5 @@ public class SignInHelper extends TestBase {
         driver.findElement(By.id("user_password")).click();
         driver.findElement(By.id("user_password")).sendKeys(data.getPassword());
         driver.findElement(By.cssSelector(".submit")).click();
-    }
-
-    protected void signIn(UserData data){
-        appManager.getNavigationHelper().openHomePage();
-        appManager.getNavigationHelper().openLoginPage();
-        login(data);
     }
 }

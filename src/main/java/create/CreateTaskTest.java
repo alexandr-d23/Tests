@@ -4,27 +4,27 @@ import common.TestBase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import signin.UserData;
 
-public class CreateTaskTest extends CreateTaskHelper {
+public class CreateTaskTest extends TestBase {
 
     @Before
     public void login() {
         setup();
     }
 
-    @After
-    public void tearDown() {
-        quitDriver();
-    }
 
     @Test
     public void createTaskTest() {
-        createTask(
+        appManager.getTodoHelper().createTask(
                 new TaskData(
                         "Test",
                         "test"
                 )
         );
+    }
+
+    @After
+    public void logout() {
+        appManager.getTodoHelper().logout();
     }
 }
