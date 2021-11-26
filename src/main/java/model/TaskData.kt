@@ -1,4 +1,4 @@
-package create
+package model
 
 data class TaskData(
     val name: String,

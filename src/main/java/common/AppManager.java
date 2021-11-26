@@ -1,12 +1,12 @@
-package helpers;
+package common;
 
-import create.CreateTaskHelper;
-import kotlin.jvm.Volatile;
+import helpers.CreateTaskHelper;
+import helpers.EditTaskHelper;
+import helpers.NavigationHelper;
+import helpers.SignInHelper;
 import org.openqa.selenium.chrome.ChromeDriver;
-import signin.SignInHelper;
 
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class AppManager {
     private ChromeDriver driver;
@@ -16,6 +16,7 @@ public class AppManager {
     private NavigationHelper navigationHelper;
     private SignInHelper loginHelper;
     private CreateTaskHelper todoHelper;
+    private EditTaskHelper editHelper;
 
     private AppManager() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
@@ -25,16 +26,20 @@ public class AppManager {
         this.navigationHelper = new NavigationHelper(this);
         this.loginHelper = new SignInHelper(this);
         this.todoHelper = new CreateTaskHelper(this);
+        this.editHelper = new EditTaskHelper(this);
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
 
-    @Volatile
-    private static AppManager appManager = null;
+
+    private static ThreadLocal<AppManager> threadLocal = new ThreadLocal<>();
 
     public static AppManager getInstance() {
+        System.out.println("getInstance appmanager: " + threadLocal.get());
         synchronized(AppManager.class) {
+            AppManager appManager = threadLocal.get();
             if(appManager == null){
                 appManager = new AppManager();
+                threadLocal.set(appManager);
             }
             return appManager;
         }
@@ -58,6 +63,10 @@ public class AppManager {
 
     public SignInHelper getLoginHelper() {
         return loginHelper;
+    }
+
+    public EditTaskHelper getEditHelper() {
+        return editHelper;
     }
 
     public CreateTaskHelper getTodoHelper() {

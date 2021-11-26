@@ -1,5 +1,7 @@
 package helpers;
 
+import common.AppManager;
+
 public class NavigationHelper extends HelperBase {
 
     public NavigationHelper(AppManager appManager) {

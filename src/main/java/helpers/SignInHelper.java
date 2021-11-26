@@ -1,7 +1,7 @@
-package signin;
+package helpers;
 
-import common.TestBase;
-import helpers.AppManager;
+import common.AppManager;
+import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -22,5 +22,9 @@ public class SignInHelper {
         driver.findElement(By.id("user_password")).click();
         driver.findElement(By.id("user_password")).sendKeys(data.getPassword());
         driver.findElement(By.cssSelector(".submit")).click();
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
     }
 }

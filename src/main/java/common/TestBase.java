@@ -1,11 +1,9 @@
 package common;
 
-import create.CreateTaskHelper;
-import helpers.AppManager;
+import helpers.CreateTaskHelper;
 import helpers.NavigationHelper;
-import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
-import signin.SignInHelper;
+import helpers.SignInHelper;
 
 public class TestBase {
     protected AppManager appManager;

@@ -1,4 +1,4 @@
-package signin
+package model
 
 data class UserData(
     val login: String,
